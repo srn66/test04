@@ -42,27 +42,31 @@ $workdir = "/home/snoble/Documents/test04"
 Clear-Host
 $terms = Import-Csv -Path $workdir/Data/data.csv
 $d = $(Read-Date "Please Enter a valid date: dd/mm/yyyy") #dev testing input random date(s)
+Write-Host "--------------------------------`n"
 
 foreach ($term in $terms) {
 
 	#Write-Host "Checking if todays date: $(Get-Date)"
-	Write-Host "Checking if sample date: $d "
+	#Writ#e-Host "Checking if sample date: $d "
 
-	Write-Host "Falls in: $($term.TermName) Term $($term.TermNumber)"
-	Write-Host "Between : $($term.TermStart) $($term.TermEnd)"
+	#Write-Host "Falls in: $($term.TermName) Term $($term.TermNumber) Between : $($term.TermStart) $($term.TermEnd)"
+	#Write-Host "Between : $($term.TermStart) $($term.TermEnd)"
 	IsBetweenDates $term.TermStart $term.TermEnd #use function
 
 	$DateResult = $(IsBetweenDates $term.TermStart $term.TermEnd) #true/false detection
 	#<# if result is true....
 	if ( $DateResult ) {
 		Write-Host "timeframe hit..."
+        Write-Host "Sample date: $d "
+        Write-Host "Falls in: $($term.TermName) Term $($term.TermNumber) Between : $($term.TermStart) $($term.TermEnd)"
+
 		break # leave for each loop as today/sample date has been matched with one of the timeframes
 	}
-	Write-Host "--------------------------------`n"
+	#Write-Host "--------------------------------`n"
 	sleep 1
 
 }
-Write-Host "Test continuation of script post date hit..."
+Write-Host "Continuation of script post date hit..."
 #}
 
 <#
