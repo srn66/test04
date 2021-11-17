@@ -40,7 +40,7 @@ Function IsBetweenDates([Datetime]$start,[Datetime]$end)
 $workdir = "/home/snoble/Documents/test04"
 
 Clear-Host
-$terms = Import-Csv -Path $workdir/data.csv
+$terms = Import-Csv -Path $workdir/Data/data.csv
 $d = $(Read-Date "Please Enter a valid date: dd/mm/yyyy") #dev testing input random date(s)
 
 foreach ($term in $terms) {
